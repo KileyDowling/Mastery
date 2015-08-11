@@ -1,0 +1,1 @@
+DBCC CHECKIDENT('BlogPost', RESEED, 0)

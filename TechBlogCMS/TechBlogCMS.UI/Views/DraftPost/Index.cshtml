@@ -1,0 +1,86 @@
+﻿@model TechBlogCMS.UI.Models.DraftPostVM
+@using System.Collections
+@using Microsoft.AspNet.Identity
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TinyMCE Example</title>
+    <!-- TinyMCE Script Reference -->
+    <script src="~/scripts/tinymce/tinymce.min.js"></script>
+    <!-- Script to wire up your TinyMCE editor -->
+    <script type="text/javascript">
+        // Initialize your tinyMCE Editor with your preferred options
+        tinyMCE.init({
+            // General options
+            mode: "textareas",
+            theme: "modern",
+            // Theme options
+            theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+            theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_resizing: true,
+
+            // Example content CSS (should be your site CSS)
+            content_css: "Content/bootstrap.min.css"
+        });
+    </script>
+</head>
+<body>
+    <!-- This will automatically post to your Index method (that is decorated with a HttpPost attribute) -->
+    @using (Html.BeginForm(new { enctype="multipart/form-data"}))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <br/>
+            <input type="hidden" id="NewPost_UserID" name="NewPost.UserID" value="@User.Identity.GetUserId()">
+            <h2>Create a New Post</h2>
+            <br/>
+            <h4>
+                @Html.Label("Creator: " + @User.Identity.GetUserName())
+            </h4>
+            <h4>
+                @Html.Label("Date")
+                @Html.EditorFor(m => m.NewPost.DateOfPost, new {id="dateOfPost"})
+            </h4>
+            <h4>
+                @Html.Label("Post Title")
+                @Html.TextBoxFor(model => model.NewPost.PostTitle, new {@style = "width: 400px;"})
+            </h4>
+            <h4>
+                @Html.Label("Category")
+                @Html.DropDownListFor(m => m.SelectedCategory.CategoryID, Model.Categories)
+            </h4>
+
+            <h4>
+                @if(@User.IsInRole("Administrator"))
+                {
+                @Html.Label("Status")
+                @Html.DropDownListFor(m => m.NewPost.Status.StatusID, Model.Statuses)
+                }
+            </h4>
+
+
+            @Html.TextAreaFor(model => model.HtmlContent)
+            <h4>
+                @Html.Label("Hashtags")
+            </h4>
+            @Html.ListBoxFor(m => m.SelectedHashtags, Model.Hashtags, new { @class = "list-group-item", @size = 2 })
+            <br/>
+
+            <input type="submit" id="create" value="Create"/>
+        </div>
+    }
+
+    @section Scripts {
+        <script src="~/Scripts/app/draftPost.js"> </script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+            }
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechBlogCMS.UI", "TechBlogCMS.UI\TechBlogCMS.UI.csproj", "{A97396CC-9AC2-442F-A253-ABCC5FD07DA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechBlogCMS.DATA", "TechBlogCMS.DATA\TechBlogCMS.DATA.csproj", "{4A3374ED-D11C-4CA7-9367-AB678ADE58E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechBlogCMS.BLL", "TechBlogCMS.BLL\TechBlogCMS.BLL.csproj", "{37418D64-80DC-4185-A17A-084FBB3E137F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechblogCMS.MODELS", "TechblogCMS.MODELS\TechblogCMS.MODELS.csproj", "{61795462-12ED-47AD-AB70-226EFE6A2A97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechBlogCMS.TESTS", "TechBlogCMS.TESTS\TechBlogCMS.TESTS.csproj", "{B294ECC2-7416-405E-8524-F55833902CD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A97396CC-9AC2-442F-A253-ABCC5FD07DA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97396CC-9AC2-442F-A253-ABCC5FD07DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97396CC-9AC2-442F-A253-ABCC5FD07DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97396CC-9AC2-442F-A253-ABCC5FD07DA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A3374ED-D11C-4CA7-9367-AB678ADE58E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3374ED-D11C-4CA7-9367-AB678ADE58E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3374ED-D11C-4CA7-9367-AB678ADE58E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3374ED-D11C-4CA7-9367-AB678ADE58E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37418D64-80DC-4185-A17A-084FBB3E137F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37418D64-80DC-4185-A17A-084FBB3E137F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37418D64-80DC-4185-A17A-084FBB3E137F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37418D64-80DC-4185-A17A-084FBB3E137F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61795462-12ED-47AD-AB70-226EFE6A2A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61795462-12ED-47AD-AB70-226EFE6A2A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61795462-12ED-47AD-AB70-226EFE6A2A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61795462-12ED-47AD-AB70-226EFE6A2A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B294ECC2-7416-405E-8524-F55833902CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B294ECC2-7416-405E-8524-F55833902CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B294ECC2-7416-405E-8524-F55833902CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B294ECC2-7416-405E-8524-F55833902CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

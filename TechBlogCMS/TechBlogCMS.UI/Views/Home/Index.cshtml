@@ -1,0 +1,57 @@
+﻿@model TechBlogCMS.UI.Models.BlogPostAllVM
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Welcome to the TechBlog!!</h1>
+    <p class="lead">Here you will find my random thoughts on technology, programming, and anything else I may fine relevant or interesting!</p>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="col-sm-10">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="btn btn-default">Category</li>
+                <li class="btn btn-default">Date</li>
+                <li class="btn btn-default">Hashtag</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-sm-8">
+                <h2>Recent Blog Posts</h2>
+                @if (Model.BlogPosts.Count > 0)
+                {
+                    foreach (var post in Model.BlogPosts)
+                    {
+                        <table class="table-condensed">
+                            <tr>
+                                <td><h4><b><a> @post.PostTitle </a></b></h4></td>
+                                <td><h5><em>@post.DateOfPost.ToLongDateString()</em></h5></td>
+                            </tr>
+                        </table>
+                        <div id="postContent" style="display: none"> @Html.Raw(post.PostContent) </div>
+                        <button id="showContent" class="btn-link"> Read More...</button>
+                        <hr/>
+                    }
+                }
+                else
+                {
+                    <p>There are no blog posts to display</p>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $('button').click(function () {
+            $(this).prev('div').toggle();
+            $(this).text('...');
+        });
+    </script>
+}

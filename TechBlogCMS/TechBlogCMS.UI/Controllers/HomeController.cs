@@ -17,7 +17,7 @@ namespace TechBlogCMS.UI.Controllers
             var categoryOps = OperationsFactory.CreateCategoryOps();
             BlogPostAllVM postsVM = new BlogPostAllVM()
             {
-                BlogPosts = ops.GetAllBlogPosts(),
+                BlogPosts = ops.GetAllBlogPosts().OrderByDescending(x=>x.DateOfPost).Take(5).ToList(),
                 Statuses = statusOps.ListAllStatuses(),
                 Categories = categoryOps.ListAllCategories()
 

@@ -13,7 +13,7 @@ namespace TechblogCMS.MODELS.Interfaces
 
         void CreateCategory(CategoryOfPost category);
 
-        void SaveBlogPostCategory(int categoryId, int blogPostId);
+        void SaveBlogPostCategory(List<int> categoryIds, int blogPostId);
 
         List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId);
 

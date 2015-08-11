@@ -29,14 +29,14 @@ namespace TechBlogCMS.BLL
                 
         }
 
-        public void SaveBlogPostCategory(int categoryId, BlogPost blog)
+        public void SaveBlogPostCategory(List<int>  categoryIds , BlogPost blog)
         {
             var ops = OperationsFactory.CreateBlogPostOps();
             var list = ops.GetAllBlogPosts();
             var lastPost = list.FirstOrDefault(x => x.PostTitle == blog.PostTitle);
 
             if(lastPost !=null)
-                _repo.SaveBlogPostCategory(categoryId,lastPost.BlogPostID);
+                _repo.SaveBlogPostCategory(categoryIds,lastPost.BlogPostID);
         }
 
         public List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId)

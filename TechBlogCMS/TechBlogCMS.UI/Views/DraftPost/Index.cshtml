@@ -2,7 +2,6 @@
 @using System.Collections
 @using Microsoft.AspNet.Identity
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,10 +52,10 @@
                 @Html.Label("Post Title")
                 @Html.TextBoxFor(model => model.NewPost.PostTitle, new {@style = "width: 400px;"})
             </h4>
-            <h4>
-                @Html.Label("Category")
-                @Html.DropDownListFor(m => m.SelectedCategory.CategoryID, Model.Categories)
-            </h4>
+            <h4> @Html.Label("Category")</h4>
+
+                @Html.ListBoxFor(m => m.SelectedCategoryIds, Model.Categories)
+            <em>@Html.ActionLink("Create a new category", "CreateCategory", "DraftPost")</em>
 
             <h4>
                 @if(@User.IsInRole("Administrator"))

@@ -16,7 +16,7 @@ namespace TechBlogCMS.DATA
         {
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
-                return cn.Query<CategoryOfPost>("Select * FROM CategoryOfPost").ToList();
+                return cn.Query<CategoryOfPost>("Select * FROM CategoryOfPost ORDER BY CategoryType").ToList();
             }
         }
 
@@ -29,12 +29,16 @@ namespace TechBlogCMS.DATA
             }
         }
 
-        public void SaveBlogPostCategory(int categoryId, int blogPostId)
+        public void SaveBlogPostCategory(List<int> categoryIds , int blogPostId)
         {
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
-                cn.Query("insert into PostCategories(CategoryID, BlogPostID) values(@catId, @blogId)",
-                    new {catId = categoryId, blogId = blogPostId});
+                foreach (var id in categoryIds)
+                {
+                    cn.Query("insert into PostCategories(CategoryID, BlogPostID) values(@catId, @blogId)",
+                    new { catId = id, blogId = blogPostId });
+                }
+                
             }
         }
 

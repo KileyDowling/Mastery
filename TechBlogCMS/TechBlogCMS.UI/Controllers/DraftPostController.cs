@@ -22,7 +22,7 @@ namespace TechBlogCMS.UI.Controllers
                     Status = new Status()
                 },
 
-                SelectedCategory = new CategoryOfPost()
+                SelectedCategoryIds = new  List<int>()
 
             };
             var categoryOps = OperationsFactory.CreateCategoryOps();
@@ -61,11 +61,25 @@ namespace TechBlogCMS.UI.Controllers
             var ops = OperationsFactory.CreateBlogPostOps();
             var categoryOps = OperationsFactory.CreateCategoryOps();
             ops.SaveBlogPost(blogPost);
-            categoryOps.SaveBlogPostCategory(model.SelectedCategory.CategoryID,blogPost);
+            categoryOps.SaveBlogPostCategory(model.SelectedCategoryIds,blogPost);
 
 
             return RedirectToAction("Index","Home");
 
+        }
+
+        public ActionResult CreateCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateCategory(CategoryOfPost newCategory)
+        {
+            var ops = OperationsFactory.CreateCategoryOps();
+            ops.CreateCategory(newCategory);
+
+            return RedirectToAction("Index","DraftPost");
         }
     }
 }

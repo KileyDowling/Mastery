@@ -40,7 +40,7 @@ namespace TechBlogCMS.DATA.Mocks
         {
         }
 
-        public void SaveBlogPostCategory(int categoryId, int blogPostId)
+        public void SaveBlogPostCategory(List<int> categoryIds, int blogPostId)
         {
             
         }

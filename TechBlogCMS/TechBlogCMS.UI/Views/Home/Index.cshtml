@@ -22,7 +22,10 @@
     <div class="col-lg-8">
         <div class="row">
             <div class="col-sm-8">
-                <h2>Recent Blog Posts</h2>
+                <h2>5 Most Recent Blog Posts</h2>
+
+                @Html.ActionLink("View All Blog Posts", "BlogPost", "Index", new {@class="btn btn-primary"})
+                <br/>
                 @if (Model.BlogPosts.Count > 0)
                 {
                     foreach (var post in Model.BlogPosts)

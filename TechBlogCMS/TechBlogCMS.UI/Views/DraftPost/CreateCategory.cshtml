@@ -1,0 +1,12 @@
+﻿@model TechBlogCMS.Models.CategoryOfPost
+@using (Html.BeginForm("CreateCategory", "DraftPost",new {enctype = "multipart/form-data"}))
+{
+    <div class="form-group">
+        <h2>Create a new category</h2>
+        @Html.Label("Category Name")
+        @Html.TextBoxFor(x=>x.CategoryType, new {@class="form-control"})
+        @Html.Label("Category Description")
+        @Html.TextBoxFor(x => x.CategoryDescription, new { @class = "form-control" })
+        <input type="Submit" value="Submit"/>
+    </div>    
+}

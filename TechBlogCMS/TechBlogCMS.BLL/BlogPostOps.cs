@@ -19,7 +19,7 @@ namespace TechBlogCMS.BLL
 
         public List<BlogPost> GetAllBlogPosts()
         {
-            return _repo.GetAllBlogPosts();
+            return _repo.GetAllBlogPosts();   
         }
 
         public void SaveBlogPost(BlogPost blog)

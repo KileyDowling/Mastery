@@ -12,7 +12,6 @@ namespace TechBlogCMS.UI.Models
         [AllowHtml]
         public string HtmlContent { get; set; }
         public BlogPost NewPost { get; set; }
-        public CategoryOfPost CreateNewCategory { get; set; }
         public List<SelectListItem> Categories { get; set; }
         public List<SelectListItem> Statuses { get; set; }
         public List<SelectListItem> Hashtags { get; set; }

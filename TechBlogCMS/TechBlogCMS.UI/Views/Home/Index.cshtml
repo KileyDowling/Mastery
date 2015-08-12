@@ -1,4 +1,5 @@
-﻿@model TechBlogCMS.UI.Models.BlogPostAllVM
+﻿@using TechBlogCMS.BLL
+@model TechBlogCMS.UI.Models.BlogPostAllVM
 
 
 @{
@@ -36,7 +37,9 @@
                                 <td><h5><em>@post.DateOfPost.ToLongDateString()</em></h5></td>
                             </tr>
                         </table>
-                        <div id="postContent" style="display: none"> @Html.Raw(post.PostContent) </div>
+                        <div id="postContent" style="display: none"> @Html.Raw(post.PostContent)
+                <div id="categoriesOfBlog"></div>
+                        </div>
                         <button id="showContent" class="btn-link"> Read More...</button>
                         <hr/>
                     }

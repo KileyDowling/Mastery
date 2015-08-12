@@ -28,5 +28,15 @@ namespace TechBlogCMS.BLL
                 _repo.CreateHashtag(newHashtag);
 
         }
+
+        public void SaveBlogPostHashtags(List<int> hashtagIds, BlogPost blog)
+        {
+            var ops = OperationsFactory.CreateBlogPostOps();
+            var list = ops.GetAllBlogPosts();
+            var lastPost = list.FirstOrDefault(x => x.PostTitle == blog.PostTitle);
+
+            if (lastPost != null)
+                _repo.SaveBlogPostHashtags(hashtagIds, lastPost.BlogPostID);
+        }
     }
 }

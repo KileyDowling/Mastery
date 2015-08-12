@@ -39,7 +39,11 @@ namespace TechBlogCMS.DATA.Mocks
 
         public void CreateHashtag(Hashtag newHashtag)
         {
-            throw new NotImplementedException();
+        }
+
+
+        public void SaveBlogPostHashtags(List<int> hashtagIds, int blogPostId)
+        {
         }
     }
 }

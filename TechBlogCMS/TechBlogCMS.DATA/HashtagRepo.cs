@@ -30,5 +30,20 @@ namespace TechBlogCMS.DATA
                     new { hashType = newHashtag.HashtagType, hashDesc = newHashtag.HashtagDescription });
             }
         }
+
+        public void SaveBlogPostHashtags(List<int> hashtagIds, int blogPostId)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                foreach (var id in hashtagIds)
+                {
+                    cn.Query("insert into PostHashtags(HashtagID, BlogPostID) values(@hashId, @blogId)",
+                    new { hashId = id, blogId = blogPostId });
+                }
+
+            }
+        }
     }
+
+
 }

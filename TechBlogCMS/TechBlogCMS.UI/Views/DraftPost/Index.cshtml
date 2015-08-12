@@ -52,28 +52,29 @@
                 @Html.Label("Post Title")
                 @Html.TextBoxFor(model => model.NewPost.PostTitle, new {@style = "width: 400px;"})
             </h4>
-            <h4> @Html.Label("Category")</h4>
-
-                @Html.ListBoxFor(m => m.SelectedCategoryIds, Model.Categories)
-            <em>@Html.ActionLink("Create a new category", "CreateCategory", "DraftPost")</em>
-
             <h4>
-                @if(@User.IsInRole("Administrator"))
+                @if (@User.IsInRole("Administrator"))
                 {
                 @Html.Label("Status")
                 @Html.DropDownListFor(m => m.NewPost.Status.StatusID, Model.Statuses)
                 }
             </h4>
 
-
             @Html.TextAreaFor(model => model.HtmlContent)
-            <h4>
-                @Html.Label("Hashtags")
-            </h4>
-            @Html.ListBoxFor(m => m.SelectedHashtags, Model.Hashtags, new { @class = "list-group-item", @size = 2 })
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5> @Html.Label("Category") <em>@Html.ActionLink("Create a new category", "CreateCategory", "DraftPost")</em></h5>
+
+                    @Html.ListBoxFor(m => m.SelectedCategoryIds, Model.Categories)
+                </div>
+                <div class="col-sm-4">
+                    <h5> @Html.Label("Hashtags") <em>@Html.ActionLink("Create a new hashtag", "CreateHashtag", "DraftPost")</em> </h5>
+                    @Html.ListBoxFor(m => m.SelectedHashtags, Model.Hashtags, new { @class = "list-group-item" })
+                </div>
+            </div>
             <br/>
 
-            <input type="submit" id="create" value="Create"/>
+            <input type="submit" id="create" value="Submit new post" class="btn btn-primary"/>
         </div>
     }
 

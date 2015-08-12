@@ -50,5 +50,16 @@ namespace TechBlogCMS.DATA
             }
         }
 
+
+        public List<CategoryOfPost> ListAllCategoriesForBlogPost(int blogId)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                return
+                    cn.Query<CategoryOfPost>(
+                        "select cp.CategoryType, cp.CategoryDescription,cp.CategoryID from PostCategories pc inner join BlogPost bp on pc.BlogPostID = bp.BlogPostID inner join CategoryOfPost cp on cp.CategoryID = pc.CategoryID where bp.BlogPostID = @postId",
+                        new { postId = blogId }).ToList();
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TechBlogCMS.BLL;
+using TechBlogCMS.Models;
 using TechBlogCMS.UI.Models;
 
 namespace TechBlogCMS.UI.Controllers
@@ -17,10 +18,9 @@ namespace TechBlogCMS.UI.Controllers
             var categoryOps = OperationsFactory.CreateCategoryOps();
             BlogPostAllVM postsVM = new BlogPostAllVM()
             {
-                BlogPosts = ops.GetAllBlogPosts().OrderByDescending(x=>x.DateOfPost).Take(5).ToList(),
+                BlogPosts = ops.GetAllBlogPosts().FindAll(x=>x.Status.StatusID == 2).FindAll(x=>x.DateOfPost <= DateTime.Today).OrderByDescending(x=>x.DateOfPost).Take(5).ToList(),
                 Statuses = statusOps.ListAllStatuses(),
-                Categories = categoryOps.ListAllCategories()
-
+                Categories = categoryOps.ListAllCategories(),
             };
 
             return View(postsVM);

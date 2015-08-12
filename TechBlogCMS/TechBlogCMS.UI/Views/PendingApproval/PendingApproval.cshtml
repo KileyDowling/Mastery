@@ -1,4 +1,6 @@
-﻿
+﻿@using TechBlogCMS.Models
+@using TechBlogCMS.UI.Models
+@model TechBlogCMS.UI.Models.ApprovalVM
 @{
     ViewBag.Title = "PendingApproval";
 }
@@ -7,23 +9,35 @@
 
 <h3>Blog Post Approvals</h3>
 
-
 <table class="table table-striped">
     <thead>
     <tr>
         <th>User Name</th>
         <th>Post Title</th>
         <th>Post Date</th>
+        <th>Approval Status</th>
+        
+    </tr>
     </thead>
+    <tbody>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>@Html.DropDownListFor(m => m.Statuses, Model.Statuses)</td>
+    </tr>
+    </tbody>
 </table>
 
 <h3>Comment Approvals</h3>
+
 <table class="table table-striped">
     <thead>
         <tr>
             <th>User Name</th>
             <th>Comment</th>
             <th>Comment Date</th>
+        </tr>
     </thead>
 </table>
 

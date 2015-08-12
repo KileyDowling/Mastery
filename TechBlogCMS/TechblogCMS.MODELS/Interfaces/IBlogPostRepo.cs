@@ -12,5 +12,6 @@ namespace TechblogCMS.MODELS.Interfaces
         List<BlogPost> GetAllBlogPosts();
 
         void SaveBlogPost(BlogPost blog);
+
     }
 }

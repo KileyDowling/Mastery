@@ -51,5 +51,11 @@ namespace TechBlogCMS.DATA.Mocks
         }
 
 
+
+
+        public List<CategoryOfPost> ListAllCategoriesForBlogPost(int blogId)
+        {
+            return new List<CategoryOfPost>();
+        }
     }
 }

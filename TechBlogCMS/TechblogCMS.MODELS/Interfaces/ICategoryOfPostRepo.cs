@@ -16,6 +16,8 @@ namespace TechblogCMS.MODELS.Interfaces
         void SaveBlogPostCategory(List<int> categoryIds, int blogPostId);
 
         List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId);
+        
+        List<CategoryOfPost> ListAllCategoriesForBlogPost(int blogId);
 
     }
 }

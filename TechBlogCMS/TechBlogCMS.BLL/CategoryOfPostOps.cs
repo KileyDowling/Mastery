@@ -43,5 +43,10 @@ namespace TechBlogCMS.BLL
         {
             return _repo.ListAllBlogsInCategoryByCategoryId(categoryId);
         }
+
+        public List<CategoryOfPost> ListAllCategoriesForBlogPost(int blogId)
+        {
+            return _repo.ListAllCategoriesForBlogPost(blogId);
+        }
     }
 }

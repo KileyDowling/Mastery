@@ -81,5 +81,20 @@ namespace TechBlogCMS.UI.Controllers
 
             return RedirectToAction("Index","DraftPost");
         }
+
+
+        public ActionResult CreateHashtag()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateHashtag(Hashtag newHashtag)
+        {
+            var ops = OperationsFactory.CreateHashtagOps();
+            ops.CreateHashtag(newHashtag);
+
+            return RedirectToAction("Index", "DraftPost");
+        }
     }
 }

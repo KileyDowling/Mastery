@@ -34,7 +34,7 @@
                         }
                         @if (User.IsInRole("Administrator"))
                         {
-                            <li>@Html.ActionLink("Site Settings", "Index", "Home")</li>    
+                            <li>@Html.ActionLink("Admin Approvals", "PendingApproval", "PendingApproval")</li>    
                             <li>@Html.ActionLink("Register New User", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
 
                         }

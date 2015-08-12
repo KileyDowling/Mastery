@@ -60,6 +60,8 @@ namespace TechBlogCMS.DATA
                 cn.Query("SubmitNewBlogPost", p, commandType: CommandType.StoredProcedure);
             }
         }
+
+
     }
 
 

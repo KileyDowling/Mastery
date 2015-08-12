@@ -12,5 +12,8 @@ namespace TechblogCMS.MODELS.Interfaces
         List<Hashtag> ListAllHashtags();
 
         void CreateHashtag(Hashtag newHashtag);
+
+        void SaveBlogPostHashtags(List<int> hashtagIds, int blogPostId);
+
     }
 }

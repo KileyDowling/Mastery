@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TechBlogCMS.BLL;
+using TechBlogCMS.Models;
 using TechBlogCMS.UI.Models;
 
 namespace TechBlogCMS.UI.Controllers
@@ -21,7 +22,12 @@ namespace TechBlogCMS.UI.Controllers
             var hashtagsList = hashtagOps.ListAllHashtags();
             var ops = OperationsFactory.CreateBlogPostOps();
 
-            model.BlogPosts = ops.GetAllBlogPosts();
+            model.BlogPosts =
+                ops.GetAllBlogPosts()
+                    .FindAll(x => x.Status.StatusID == 2)
+                    .FindAll(x => x.DateOfPost <= DateTime.Today)
+                    .OrderByDescending(x => x.DateOfPost)
+                    .ToList();
             model.GenerateCategoriesList(categoriesList);
             model.GenerateHashtagsList(hashtagsList);
 
@@ -38,13 +44,19 @@ namespace TechBlogCMS.UI.Controllers
             var ops = OperationsFactory.CreateBlogPostOps();
             if (categoryId != 0)
             {
-                model.BlogPosts = ops.ListAllBlogsInCategoryByCategoryId(categoryId);
+                model.BlogPosts = ops.ListAllBlogsInCategoryByCategoryId(categoryId).FindAll(x => x.Status.StatusID == 2)
+                    .FindAll(x => x.DateOfPost <= DateTime.Today)
+                    .OrderByDescending(x => x.DateOfPost)
+                    .ToList();
                 model.SelectedCategoryName =
                     categoryOps.ListAllCategories().FirstOrDefault(x => x.CategoryID == categoryId).CategoryType;
             }
             else
             {
-                model.BlogPosts = ops.ListAllBlogsByHashTag(hashtagId);
+                model.BlogPosts = ops.ListAllBlogsByHashTag(hashtagId).FindAll(x => x.Status.StatusID == 2)
+                    .FindAll(x => x.DateOfPost <= DateTime.Today)
+                    .OrderByDescending(x => x.DateOfPost)
+                    .ToList();
                 model.SelectedHashtagName =
                   hashtagOps.ListAllHashtags().FirstOrDefault(x => x.HashtagID == hashtagId).HashtagType;
             }
@@ -57,6 +69,8 @@ namespace TechBlogCMS.UI.Controllers
         // GET: BlogPost/Details/5
         public ActionResult Details(int id)
         {
+            var ops = OperationsFactory.CreateBlogPostOps();
+            var blog = ops.GetBlogPostById(id);
             return View();
         }
 
@@ -68,7 +82,7 @@ namespace TechBlogCMS.UI.Controllers
 
         // POST: BlogPost/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(BlogPost blog)
         {
             try
             {
@@ -90,7 +104,7 @@ namespace TechBlogCMS.UI.Controllers
 
         // POST: BlogPost/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, BlogPost blog)
         {
             try
             {
@@ -112,7 +126,7 @@ namespace TechBlogCMS.UI.Controllers
 
         // POST: BlogPost/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, BlogPost blog)
         {
             try
             {

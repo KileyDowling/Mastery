@@ -6,21 +6,21 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Welcome to the TechBlog!!</h1>
-    <p class="lead">Here you will find my random thoughts on technology, programming, and anything else I may fine relevant or interesting!</p>
-</div>
+
 
 
 
 <div class="row">
-    <div class="col-lg-4">
-        
+    <div class="col-lg-6">
+        <div class="blogIntro" style="margin-inside: 10%">
+            <h2>   Welcome to the TechBlog!!</h2>
+            <h4 class="lead"> Here you will find my random thoughts on technology, programming, and anything else I may fine relevant or interesting!</h4>
+        </div>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-6">
         <div class="row">
-            <div class="col-sm-8">
-                <h2>5 Most Recent Blog Posts</h2>
+            <div class="col-lg-10">
+                <h3 style="padding-top:15%">5 Most Recent Blog Posts</h3>
 
                 @Html.ActionLink("View All Blog Posts", "ShowAllBlogPost", "BlogPost")
                 <br/>

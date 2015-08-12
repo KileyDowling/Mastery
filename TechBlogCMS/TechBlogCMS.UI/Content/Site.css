@@ -1,4 +1,21 @@
-﻿body {
+﻿.blogIntro {
+ 
+    text-align: center;
+    background-color: #b0c4de;
+   
+}
+
+
+.group h3 {
+    text-align: center;
+    border: 2px;
+    border-color: #b0c4de;
+    border-style: solid;
+    background-color: #b0c4de;
+    border-radius: 5px;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }

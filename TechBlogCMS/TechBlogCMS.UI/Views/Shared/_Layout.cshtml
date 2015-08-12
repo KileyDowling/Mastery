@@ -32,6 +32,8 @@
                             <li>@Html.ActionLink("Post Blog", "Index", "DraftPost")</li>
                             
                         }
+
+                        <li> @Html.ActionLink("View All Blog Posts", "ShowAllBlogPost", "BlogPost")</li>
                         @if (User.IsInRole("Administrator"))
                         {
                             <li>@Html.ActionLink("Admin Approvals", "PendingApproval", "PendingApproval")</li>    

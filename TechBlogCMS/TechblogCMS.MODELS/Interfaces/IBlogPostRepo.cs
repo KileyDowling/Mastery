@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,11 +12,17 @@ namespace TechblogCMS.MODELS.Interfaces
     {
         List<BlogPost> GetAllBlogPosts();
 
+        BlogPost GetBlogPostById(int blogPostId);
+
         void SaveBlogPost(BlogPost blog);
 
         List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId);
 
         List<BlogPost> ListAllBlogsByHashTag(int hashtagId);
+
+        void EditBlogPost(BlogPost blog);
+
+        void DeleteBlogPost(BlogPost blog);
 
 
     }

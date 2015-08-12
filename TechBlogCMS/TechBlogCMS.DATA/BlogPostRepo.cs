@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -54,6 +55,45 @@ namespace TechBlogCMS.DATA
             }
             return blogPosts;
         }
+
+        public BlogPost GetBlogPostById(int blogPostId)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var cmd = new SqlCommand("Select b.UserID, b.PostContent,b.StatusID,s.StatusType, b.DateOfPost, b.PostTitle, b.BlogPostID from Blogpost b inner join [Status] s  on b.StatusID= s.StatusID where b.BlogPostID = BlogPostID order by b.DateOfPost desc", cn);
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        var blog = new BlogPost()
+                        {
+                            Status = new Status(),
+                            User = new User()
+                        };
+                        blog.User.UserId = dr.GetString(0);
+                        blog.PostContent = dr.GetString(1);
+                        blog.Status.StatusID = dr.GetInt32(2);
+                        blog.Status.StatusType = dr.GetString(3);
+                        blog.DateOfPost = dr.GetDateTime(4);
+                        blog.PostTitle = dr.GetString(5);
+                        blog.BlogPostID = dr.GetInt32(6);
+
+                        return blog;
+                    }
+                }
+
+            }
+            //var repo = new UserRepo();
+            //{
+            //    var id = blog.User.UserId;
+            //    blog.User = repo.GetUserById(id);
+            //    blog.User.UserId = id;
+            //}
+
+            return null;
+        }
+    
 
         public void SaveBlogPost(BlogPost blog)
         {
@@ -142,6 +182,32 @@ namespace TechBlogCMS.DATA
             }
             return blogPosts;
 
+        }
+
+        public void EditBlogPost(BlogPost blog)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var cmd = new SqlCommand(
+                    "UPDATE [dbo].[BlogPost]" +
+                    "SET [PostContent] = @PostContent," +
+                    "[StatusID] = @StatusId," +
+                    "[DateOfPost] = @DateOfPost," +
+                    "[PostTitle] = @PostTitle" +
+                    "WHERE [BlogPostID] = @BlogPostId)");
+                cmd.Parameters.AddWithValue("@PostContent", blog.PostContent);
+                cmd.Parameters.AddWithValue("@StatusId", blog.Status);
+                cmd.Parameters.AddWithValue("@DateOfPost", blog.DateOfPost);
+                cmd.Parameters.AddWithValue("@PostTitle", blog.PostTitle);
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteBlogPost(BlogPost blog)
+        {
+            throw new NotImplementedException();
         }
     }
 

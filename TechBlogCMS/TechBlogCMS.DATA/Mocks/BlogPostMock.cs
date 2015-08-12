@@ -40,6 +40,11 @@ namespace TechBlogCMS.DATA.Mocks
             };
         }
 
+        public BlogPost GetBlogPostById(int blogPostId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SaveBlogPost(BlogPost blog)
         {
         }
@@ -53,6 +58,16 @@ namespace TechBlogCMS.DATA.Mocks
         public List<BlogPost> ListAllBlogsByHashTag(int hashtagId)
         {
             return new List<BlogPost>();
+        }
+
+        public void EditBlogPost(BlogPost blog)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteBlogPost(BlogPost blog)
+        {
+            throw new NotImplementedException();
         }
     }
 }

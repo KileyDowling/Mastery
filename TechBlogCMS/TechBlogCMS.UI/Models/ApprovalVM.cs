@@ -11,6 +11,7 @@ namespace TechBlogCMS.UI.Models
     public class ApprovalVM
     {
         public List<BlogPost> ListOfPosts { get; set; }
+        public List<BlogPost> ScheduledPosts { get; set; }
         public List<BlogPost> RejectedPostsList { get; set; }
         public List<BlogPost> DraftedPosts { get; set; } 
         public List<SelectListItem> Statuses { get; set; }

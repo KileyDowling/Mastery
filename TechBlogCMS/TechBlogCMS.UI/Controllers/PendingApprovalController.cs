@@ -24,6 +24,7 @@ namespace TechBlogCMS.UI.Controllers
             model.ListOfPosts = blogPostOps.GetAllBlogPosts().FindAll(x=>x.Status.StatusID == 1);
             model.RejectedPostsList = blogPostOps.GetAllBlogPosts().FindAll(x => x.Status.StatusID == 3);
             model.DraftedPosts = blogPostOps.GetAllBlogPosts().FindAll(x => x.Status.StatusID == 5);
+            model.ScheduledPosts = blogPostOps.GetAllBlogPosts().FindAll(x => x.Status.StatusID == 6 || x.DateOfPost > DateTime.Today);
             var statusList = statusOps.ListAllStatuses();
 
             model.GenerateStatusList(statusList);

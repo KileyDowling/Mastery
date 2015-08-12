@@ -18,20 +18,17 @@ namespace TechBlogCMS.DATA.Mocks
                 {
                     HashtagID = 1,
                     HashtagType = "#computers",
-                    HashtagDescription = "#computers"
 
                 },
                 new Hashtag()
                 {
                    HashtagID = 2,
                    HashtagType = "#technology",
-                   HashtagDescription = "#technology"
                 },
                 new Hashtag ()
                 {
                     HashtagID = 3,
                     HashtagType = "#randomthoughts",
-                    HashtagDescription = "#randomthoughts"
                 }
             };
         }
@@ -44,6 +41,12 @@ namespace TechBlogCMS.DATA.Mocks
 
         public void SaveBlogPostHashtags(List<int> hashtagIds, int blogPostId)
         {
+        }
+
+
+        public List<Hashtag> ListAllHashtagsForBlogPost(int blogId)
+        {
+            return new List<Hashtag>();
         }
     }
 }

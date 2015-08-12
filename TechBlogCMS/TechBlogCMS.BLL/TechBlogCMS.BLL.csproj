@@ -50,6 +50,7 @@
     <Compile Include="OperationsFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusOps.cs" />
+    <Compile Include="UserOps.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TechBlogCMS.DATA\TechBlogCMS.DATA.csproj">

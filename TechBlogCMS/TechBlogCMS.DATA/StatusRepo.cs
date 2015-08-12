@@ -19,5 +19,14 @@ namespace TechBlogCMS.DATA
                 return cn.Query<Status>("SELECT * FROM [TechBlogCMS].[dbo].[Status]").ToList();
             }
         }
+
+
+        public void UpdateStatus(int blogPostId, int newStatusId)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                cn.Query<Status>("update BlogPost SET StatusID = @StatId WHERE BlogPostID = @PostId", new { StatId = newStatusId, PostId = blogPostId});
+            }
+        }
     }
 }

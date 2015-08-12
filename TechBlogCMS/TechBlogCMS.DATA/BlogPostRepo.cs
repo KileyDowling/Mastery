@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using TechblogCMS.MODELS;
 using TechblogCMS.MODELS.Interfaces;
 using TechBlogCMS.Models;
 
@@ -28,9 +29,10 @@ namespace TechBlogCMS.DATA
                     {
                         var blog = new BlogPost()
                         {
-                            Status = new Status()
+                            Status = new Status(),
+                            User = new User()
                         };
-                        blog.UserID = dr.GetString(0);
+                        blog.User.UserId = dr.GetString(0);
                         blog.PostContent = dr.GetString(1);
                         blog.Status.StatusID = dr.GetInt32(2);
                         blog.Status.StatusType = dr.GetString(3);
@@ -43,6 +45,13 @@ namespace TechBlogCMS.DATA
                 }
 
             }
+            var repo = new UserRepo();
+            foreach (var blog in blogPosts)
+            {
+                var id = blog.User.UserId;
+                blog.User = repo.GetUserById(id);
+                blog.User.UserId = id;
+            }
             return blogPosts;
         }
 
@@ -51,7 +60,7 @@ namespace TechBlogCMS.DATA
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
                 var p = new DynamicParameters();
-                p.Add("@UserId", blog.UserID);
+                p.Add("@UserId", blog.User.UserId);
                 p.Add("@PostContent", blog.PostContent);
                 p.Add("@StatusID", blog.Status.StatusID);
                 p.Add("@DateOfPost", blog.DateOfPost);
@@ -61,7 +70,79 @@ namespace TechBlogCMS.DATA
             }
         }
 
+        public List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId)
+        {
+            var blogPosts = new List<BlogPost>();
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var cmd = new SqlCommand("select bp.UserID, bp.PostContent,bp.StatusID, s.StatusType,bp.DateOfPost,bp.PostTitle,bp.BlogPostID,u.UserName, u.FirstName,u.LastName from BlogPost bp inner join PostCategories pc on bp.BlogPostID = pc.BlogPostID inner join CategoryOfPost cp  on cp.CategoryID = pc.CategoryID inner join AspNetUsers u on u.Id = bp.UserID inner join [Status] s on s.StatusID = bp.StatusID where pc.CategoryID =@catId order by bp.DateOfPost desc", cn);
+                cmd.Parameters.AddWithValue("@catId", categoryId);
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        var blog = new BlogPost()
+                        {
+                            Status = new Status(),
+                            User = new User()
+                        };
+                        blog.User.UserId = dr.GetString(0);
+                        blog.PostContent = dr.GetString(1);
+                        blog.Status.StatusID = dr.GetInt32(2);
+                        blog.Status.StatusType = dr.GetString(3);
+                        blog.DateOfPost = dr.GetDateTime(4);
+                        blog.PostTitle = dr.GetString(5);
+                        blog.BlogPostID = dr.GetInt32(6);
+                        blog.User.UserName = dr.GetString(7);
+                        blog.User.FirstName = dr.GetString(8);
+                        blog.User.LastName = dr.GetString(9);
 
+                        blogPosts.Add(blog);
+                    }
+                }
+
+            }
+            return blogPosts;
+
+        }
+
+        public List<BlogPost> ListAllBlogsByHashTag(int hashtagId)
+        {
+            var blogPosts = new List<BlogPost>();
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var cmd = new SqlCommand("select bp.UserID, bp.PostContent,bp.StatusID,  s.StatusType, bp.DateOfPost, bp.PostTitle, bp.BlogPostID, u.UserName, u.FirstName,u.LastName from BlogPost bp inner join PostHashtags ph on bp.BlogPostID = ph.BlogPostID inner join Hashtag h  on h.HashtagID = ph.HashtagID inner join AspNetUsers u on u.Id = bp.UserID inner join [Status] s on s.StatusID = bp.StatusID where ph.HashtagID =@hashId order by bp.DateOfPost desc", cn);
+                cmd.Parameters.AddWithValue("@hashId", hashtagId);
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        var blog = new BlogPost()
+                        {
+                            Status = new Status(),
+                            User = new User()
+                        };
+                        blog.User.UserId = dr.GetString(0);
+                        blog.PostContent = dr.GetString(1);
+                        blog.Status.StatusID = dr.GetInt32(2);
+                        blog.Status.StatusType = dr.GetString(3);
+                        blog.DateOfPost = dr.GetDateTime(4);
+                        blog.PostTitle = dr.GetString(5);
+                        blog.BlogPostID = dr.GetInt32(6);
+                        blog.User.UserName = dr.GetString(7);
+                        blog.User.FirstName = dr.GetString(8);
+                        blog.User.LastName = dr.GetString(9);
+
+                        blogPosts.Add(blog);
+                    }
+                }
+
+            }
+            return blogPosts;
+
+        }
     }
 
 

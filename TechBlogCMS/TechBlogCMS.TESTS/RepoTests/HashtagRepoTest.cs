@@ -26,7 +26,6 @@ namespace TechBlogCMS.TESTS
             var hashtag = new Hashtag()
             {
                 HashtagType = "Trends",
-                HashtagDescription = "Trends in technology"
             };
             repo.CreateHashtag(hashtag);
             var list = repo.ListAllHashtags();

@@ -15,5 +15,7 @@ namespace TechblogCMS.MODELS.Interfaces
 
         void SaveBlogPostHashtags(List<int> hashtagIds, int blogPostId);
 
+        List<Hashtag> ListAllHashtagsForBlogPost(int blogId);
+
     }
 }

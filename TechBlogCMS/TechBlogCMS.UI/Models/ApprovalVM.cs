@@ -10,12 +10,15 @@ namespace TechBlogCMS.UI.Models
 {
     public class ApprovalVM
     {
-        public string UserName { get; set; }
-        public int BlogPostID { get; set; }
+        public List<BlogPost> ListOfPosts { get; set; }
+        public List<BlogPost> RejectedPostsList { get; set; }
+        public List<BlogPost> DraftedPosts { get; set; } 
         public List<SelectListItem> Statuses { get; set; }
+        public int BlogPostId { get; set; }
+        public int StatusId { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime DateOfPost { get; set; }
+        public BlogPost SelectedBlogPost { get; set; }
+
 
 
         public void GenerateStatusList(List<Status> statuses)

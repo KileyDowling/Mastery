@@ -10,22 +10,19 @@
     <h1>Welcome to the TechBlog!!</h1>
     <p class="lead">Here you will find my random thoughts on technology, programming, and anything else I may fine relevant or interesting!</p>
 </div>
+
+
+
 <div class="row">
     <div class="col-lg-4">
-        <div class="col-sm-10">
-            <ul class="nav nav-pills nav-stacked">
-                <li class="btn btn-default">Category</li>
-                <li class="btn btn-default">Date</li>
-                <li class="btn btn-default">Hashtag</li>
-            </ul>
-        </div>
+        
     </div>
     <div class="col-lg-8">
         <div class="row">
             <div class="col-sm-8">
                 <h2>5 Most Recent Blog Posts</h2>
 
-                @Html.ActionLink("View All Blog Posts", "BlogPost", "Index", new {@class="btn btn-primary"})
+                @Html.ActionLink("View All Blog Posts", "ShowAllBlogPost", "BlogPost")
                 <br/>
                 @if (Model.BlogPosts.Count > 0)
                 {

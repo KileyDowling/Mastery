@@ -40,9 +40,19 @@ namespace TechBlogCMS.DATA.Mocks
             };
         }
 
-
         public void SaveBlogPost(BlogPost blog)
         {
+        }
+
+        public List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId)
+        {
+            return new List<BlogPost>();
+        }
+
+
+        public List<BlogPost> ListAllBlogsByHashTag(int hashtagId)
+        {
+            return new List<BlogPost>();
         }
     }
 }

@@ -27,5 +27,16 @@ namespace TechBlogCMS.BLL
             if(blog.DateOfPost > new DateTime(01/01/2000))
                 _repo.SaveBlogPost(blog);
         }
+
+        public List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId)
+        {
+            return _repo.ListAllBlogsInCategoryByCategoryId(categoryId);
+
+        }
+
+        public List<BlogPost> ListAllBlogsByHashTag(int hashtagId)
+        {
+            return _repo.ListAllBlogsByHashTag(hashtagId);
+        }
     }
 }

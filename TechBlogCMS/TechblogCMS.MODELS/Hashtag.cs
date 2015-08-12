@@ -10,6 +10,5 @@ namespace TechBlogCMS.Models
     {
         public int HashtagID { get; set; }
         public string HashtagType { get; set; }
-        public string HashtagDescription { get; set; }
     }
 }

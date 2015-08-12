@@ -20,6 +20,11 @@ namespace TechBlogCMS.BLL
         public List<Status> ListAllStatuses()
         {
             return _repo.GetAllStatuses();
-        } 
+        }
+
+        public void UpdateStatus(int blogPostId, int newStatusId)
+        {
+            _repo.UpdateStatus(blogPostId, newStatusId);
+        }
     }
 }

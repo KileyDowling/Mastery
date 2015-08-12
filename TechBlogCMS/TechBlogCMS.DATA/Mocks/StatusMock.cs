@@ -20,5 +20,11 @@ namespace TechBlogCMS.DATA.Mocks
                 new Status() {StatusID = 3, StatusType = "Rejected "}
             };
         }
+
+
+        public void UpdateStatus(int blogPostId, int newStatusId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

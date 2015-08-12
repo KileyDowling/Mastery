@@ -1,0 +1,37 @@
+﻿@model TechBlogCMS.UI.Models.BlogPostAllVM
+
+<div>
+    @if (Model.Categories != null || Model.Hashtags != null)
+    {
+        <form action="DisplayBy" method="Post">
+
+            @Html.Label("Filter Posts By Category")
+            @Html.DropDownListFor(x => x.SelectedCategoryId, Model.Categories)
+            @Html.Label("Filter Posts By Hashtag")
+            @Html.DropDownListFor(x => x.SelectedHashtagId, Model.Categories)
+            <button>Update</button>
+
+        </form>
+    }
+
+</div>
+
+<div>
+    @if (Model.BlogPostsByCategory != null)
+    {
+        foreach (var b in Model.BlogPostsByCategory)
+        {
+            <div> @b.DateOfPost, @b.PostTitle</div>
+        }
+    }
+</div>
+<div>
+    @if (Model.BlogPostsByHashTag != null)
+    {
+        foreach (var h in Model.BlogPostsByHashTag)
+        {
+            <div> @h.DateOfPost, @h.PostTitle</div>
+        }
+    }
+
+</div>

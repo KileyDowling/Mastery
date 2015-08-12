@@ -42,13 +42,7 @@ namespace TechBlogCMS.DATA
             }
         }
 
-        public List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId)
-        {
-            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
-            {
-                return cn.Query<BlogPost>("select * from BlogPost bp inner join PostCategories  pc on bp.BlogPostID = pc.BlogPostID inner join CategoryOfPost cp  on cp.CategoryID = pc.CategoryID where pc.CategoryID = @postCategoryId", new { postCategoryId = categoryId }).ToList();
-            }
-        }
+       
 
 
         public List<CategoryOfPost> ListAllCategoriesForBlogPost(int blogId)

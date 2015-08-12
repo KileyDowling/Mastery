@@ -38,7 +38,7 @@ namespace TechBlogCMS.TESTS
                PostContent = "<p>Hello Everyone</p>",
                PostTitle = "Blog More",
                Status = new Status(){StatusID = 1},
-               UserID = "f319beb5-8a14-40c1-9cb5-0d6c92571ae4",
+               //UserID = "f319beb5-8a14-40c1-9cb5-0d6c92571ae4",
                DateOfPost = DateTime.Now
 
             };

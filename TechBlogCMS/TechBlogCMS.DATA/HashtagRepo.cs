@@ -26,8 +26,8 @@ namespace TechBlogCMS.DATA
 
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
-                cn.Query<Hashtag>("insert into Hashtag(HashtagType,HashtagDescription) Values (@hashType, @hashDesc)", 
-                    new { hashType = newHashtag.HashtagType, hashDesc = newHashtag.HashtagDescription });
+                cn.Query<Hashtag>("insert into Hashtag(HashtagType) Values (@hashType)", 
+                    new { hashType = newHashtag.HashtagType});
             }
         }
 
@@ -41,6 +41,18 @@ namespace TechBlogCMS.DATA
                     new { hashId = id, blogId = blogPostId });
                 }
 
+            }
+        }
+
+
+        public List<Hashtag> ListAllHashtagsForBlogPost(int blogId)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                return
+                    cn.Query<Hashtag>(
+                        "select ht.HashtagType,ht.HashtagID from PostHashtags ph inner join BlogPost bp on ph.BlogPostID = bp.BlogPostID inner join Hashtag ht on ht.HashtagID = ph.HashtagID where bp.BlogPostID = @postId",
+                        new { postId = blogId }).ToList();
             }
         }
     }

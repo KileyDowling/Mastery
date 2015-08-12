@@ -1,4 +1,5 @@
 ﻿@using TechBlogCMS.Models
+@using TechBlogCMS.UI.Migrations
 @using TechBlogCMS.UI.Models
 @model TechBlogCMS.UI.Models.ApprovalVM
 @{
@@ -7,37 +8,114 @@
 
 <h2>Approvals</h2>
 
-<h3>Blog Post Approvals</h3>
+<div id="container">
+    <h3>Pending Post Approvals</h3>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>User Name</th>
-        <th>Post Title</th>
-        <th>Post Date</th>
-        <th>Approval Status</th>
-        
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>@Html.DropDownListFor(m => m.Statuses, Model.Statuses)</td>
-    </tr>
-    </tbody>
-</table>
-
-<h3>Comment Approvals</h3>
-
-<table class="table table-striped">
-    <thead>
+    <table class="table table-striped">
+        <thead>
         <tr>
             <th>User Name</th>
-            <th>Comment</th>
-            <th>Comment Date</th>
-        </tr>
-    </thead>
-</table>
+            <th>Post Title</th>
+            <th>Post Date</th>
+            <th>Approval Status</th>
 
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach (var p in Model.ListOfPosts)
+        {
+            <tr>
+                <td>@p.User.UserName</td>
+                <td>@p.PostTitle</td>
+                <td>@p.DateOfPost.ToString("d")</td>
+                <td>
+                    <form action="/PendingApproval/PendingApproval" method="Post">
+                        @Html.DropDownListFor(x => x.StatusId, Model.Statuses)
+                        <input type="hidden" name="blogPostId" id="blogPostId" value="@p.BlogPostID"/>
+                        <button>Update</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h3>Drafted Posts</h3>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Post Title</th>
+                <th>Post Date</th>
+                <th>Approval Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var p in Model.DraftedPosts)
+            {
+                <tr>
+                    <td>@p.User.UserName</td>
+                    <td>@p.PostTitle</td>
+                    <td>@p.DateOfPost.ToString("d")</td>
+                    <td>
+                        <form action="/PendingApproval/PendingApproval" method="Post">
+                            @Html.DropDownListFor(x => x.StatusId, Model.Statuses)
+                            <input type="hidden" name="blogPostId" id="blogPostId" value="@p.BlogPostID" />
+                            <button>Update</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h3>Rejected Posts</h3>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Post Title</th>
+                <th>Post Date</th>
+                <th>Approval Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var p in Model.RejectedPostsList)
+            {
+                <tr>
+                    <td>@p.User.UserName</td>
+                    <td>@p.PostTitle</td>
+                    <td>@p.DateOfPost.ToString("d")</td>
+                    <td>@p.Status.StatusType</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h3>Comment Approvals</h3>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Comment</th>
+                <th>Comment Date</th>
+            </tr>
+        </thead>
+    </table>
+</div>

@@ -13,5 +13,10 @@ namespace TechblogCMS.MODELS.Interfaces
 
         void SaveBlogPost(BlogPost blog);
 
+        List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId);
+
+        List<BlogPost> ListAllBlogsByHashTag(int hashtagId);
+
+
     }
 }

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 using TechblogCMS.MODELS;
 using TechblogCMS.MODELS.Interfaces;
 
@@ -41,7 +42,10 @@ namespace TechBlogCMS.DATA
 
         public User GetUserById(string id)
         {
-            throw new NotImplementedException();
+            using (var cn = new SqlConnection(Settings.ConnectionString))
+            {
+                return cn.Query<User>("Select * FROM Aspnetusers where id = @userId", new {userId = id}).ToList().FirstOrDefault();
+            }
         }
     }
 }

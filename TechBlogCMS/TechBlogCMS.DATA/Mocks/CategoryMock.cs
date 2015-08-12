@@ -45,10 +45,6 @@ namespace TechBlogCMS.DATA.Mocks
             
         }
 
-        public List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId)
-        {
-            return new List<BlogPost>();
-        }
 
 
 

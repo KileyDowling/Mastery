@@ -19,7 +19,6 @@ namespace TechBlogCMS.TESTS
             var ops = OperationsFactory.CreateHashtagOps();
             var hashtag = new Hashtag()
             {
-                HashtagDescription = "All of the trends"
             };
             ops.CreateHashtag(hashtag);
             var list = ops.ListAllHashtags();

@@ -39,10 +39,7 @@ namespace TechBlogCMS.BLL
                 _repo.SaveBlogPostCategory(categoryIds,lastPost.BlogPostID);
         }
 
-        public List<BlogPost> ListAllBlogsInCategoryByCategoryId(int categoryId)
-        {
-            return _repo.ListAllBlogsInCategoryByCategoryId(categoryId);
-        }
+  
 
         public List<CategoryOfPost> ListAllCategoriesForBlogPost(int blogId)
         {

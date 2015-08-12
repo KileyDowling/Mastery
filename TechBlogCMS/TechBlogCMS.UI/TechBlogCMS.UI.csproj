@@ -186,7 +186,6 @@
     <Compile Include="Controllers\BlogPostController.cs" />
     <Compile Include="Controllers\DraftPostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\FilterBlogPostController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PendingApprovalController.cs" />
     <Compile Include="Global.asax.cs">
@@ -223,6 +222,10 @@
     <Compile Include="Migrations\201508111348357_newDB.cs" />
     <Compile Include="Migrations\201508111348357_newDB.Designer.cs">
       <DependentUpon>201508111348357_newDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508111859307_userChange.cs" />
+    <Compile Include="Migrations\201508111859307_userChange.Designer.cs">
+      <DependentUpon>201508111859307_userChange.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -549,12 +552,11 @@
     <Content Include="Views\DraftPost\Index.cshtml" />
     <Content Include="Views\PendingApproval\PendingApproval.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
-    <Content Include="Views\DraftPost\CreateCategory.cshtml" />
-    <Content Include="Views\DraftPost\CreateHashtag.cshtml" />
+    <Content Include="Views\BlogPost\ShowAllBlogPost.cshtml" />
+    <Content Include="Views\BlogPost\DisplayBy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BlogPost\" />
     <Folder Include="Views\Pending\" />
   </ItemGroup>
   <ItemGroup>
@@ -588,6 +590,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508111348357_newDB.resx">
       <DependentUpon>201508111348357_newDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508111859307_userChange.resx">
+      <DependentUpon>201508111859307_userChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

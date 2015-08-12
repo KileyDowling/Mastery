@@ -38,5 +38,11 @@ namespace TechBlogCMS.BLL
             if (lastPost != null)
                 _repo.SaveBlogPostHashtags(hashtagIds, lastPost.BlogPostID);
         }
+
+        public List<Hashtag> ListAllHashtagsForBlogPost(int blogId)
+        {
+            return _repo.ListAllHashtagsForBlogPost(blogId);
+        }
+
     }
 }

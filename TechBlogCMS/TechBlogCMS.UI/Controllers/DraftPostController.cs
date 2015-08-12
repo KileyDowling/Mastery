@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using TechblogCMS.MODELS;
 using TechBlogCMS.BLL;
 using TechBlogCMS.Models;
 using TechBlogCMS.UI.Models;
@@ -12,6 +14,7 @@ namespace TechBlogCMS.UI.Controllers
     public class DraftPostController : Controller
     {
         // GET: DraftPost
+        [Authorize(Roles = "Administrator, Contributor")]
         public ActionResult Index()
         {
 
@@ -19,7 +22,8 @@ namespace TechBlogCMS.UI.Controllers
             {
                 NewPost = new BlogPost()
                 {
-                    Status = new Status()
+                    Status = new Status(),
+                    User = new User()
                 },
 
                 SelectedCategoryIds = new  List<int>()
@@ -31,10 +35,10 @@ namespace TechBlogCMS.UI.Controllers
 
             var categoryList = categoryOps.ListAllCategories();
             var hastagList = hashOps.ListAllHashtags();
-           var statusList = statusOps.ListAllStatuses();
+            var statusList = statusOps.ListAllStatuses();
             model.GenerateHashtagsList(hastagList);
             model.GenerateCategoriesList(categoryList);
-           model.GenerateStatusList(statusList);
+            model.GenerateStatusList(statusList);
 
             return View(model);
         }

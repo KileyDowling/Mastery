@@ -37,7 +37,7 @@ namespace TechBlogCMS.TESTS
         [TestMethod]
         public void ListAllBlogsInCategoryByCategoryIdDbTest()
         {
-            var repo = new CategoryOfPostsRepo();
+            var repo = new BlogPostRepo();
             var list = repo.ListAllBlogsInCategoryByCategoryId(2);
             var blogPost = list.FirstOrDefault(x => x.BlogPostID == 4);
             Assert.AreEqual(1,list.Count);

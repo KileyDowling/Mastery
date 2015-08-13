@@ -7,8 +7,7 @@
 }
 
 
-    <h1>Approvals</h1>
-
+<h1>Approvals</h1>
     <div id="accordion">
         <div class="group">
                 <h3>  Pending Post Approvals</h3>
@@ -16,6 +15,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th>Discard</th>
                         <th>User Name</th>
                         <th>Post Title</th>
                         <th>Post Date</th>
@@ -28,16 +28,22 @@
                     @foreach (var p in Model.ListOfPosts)
                     {
                         <tr>
+                            <td><form action="Delete" method="Post">
+    <input type="hidden" name="id" id="id" value="@p.BlogPostID" />
+    <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+</form>   </td>
                             <td>@p.User.UserName</td>
                             <td>@p.PostTitle</td>
                             <td>@p.DateOfPost.ToString("d")</td>
                             <td>
                                 <form action="/PendingApproval/PendingApproval" method="Post">
-                                    @Html.DropDownListFor(x => x.StatusId, Model.Statuses)
+                                    @Html.DropDownListFor(x => x.StatusId, Model.Statuses, new {@class = "btn btn-default dropdown-toggle btn-sm"})
                                     <input type="hidden" name="blogPostId" id="blogPostId" value="@p.BlogPostID"/>
-                                    <button>Update</button>
+                                    <button class="btn btn-default btn-sm">Update</button>
                                 </form>
+                               
                             </td>
+                            
                         </tr>
                     }
 

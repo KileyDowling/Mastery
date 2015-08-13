@@ -9,9 +9,8 @@ using TechBlogCMS.UI.Models;
 
 namespace TechBlogCMS.UI.Controllers
 {
-    public class BlogPostController : Controller
+    public class DisplayBlogPostsController : Controller
     {
-        // GET: BlogPost
         public ActionResult ShowAllBlogPost()
         {
             var model = new BlogPostAllVM();
@@ -48,8 +47,10 @@ namespace TechBlogCMS.UI.Controllers
                     .FindAll(x => x.DateOfPost <= DateTime.Today)
                     .OrderByDescending(x => x.DateOfPost)
                     .ToList();
-                model.SelectedCategoryName =
-                    categoryOps.ListAllCategories().FirstOrDefault(x => x.CategoryID == categoryId).CategoryType;
+                var firstOrDefault = categoryOps.ListAllCategories().FirstOrDefault(x => x.CategoryID == categoryId);
+                if (firstOrDefault != null)
+                    model.SelectedCategoryName =
+                        firstOrDefault.CategoryType;
             }
             else
             {
@@ -57,87 +58,15 @@ namespace TechBlogCMS.UI.Controllers
                     .FindAll(x => x.DateOfPost <= DateTime.Today)
                     .OrderByDescending(x => x.DateOfPost)
                     .ToList();
-                model.SelectedHashtagName =
-                  hashtagOps.ListAllHashtags().FirstOrDefault(x => x.HashtagID == hashtagId).HashtagType;
+                var firstOrDefault = hashtagOps.ListAllHashtags().FirstOrDefault(x => x.HashtagID == hashtagId);
+                if (firstOrDefault != null)
+                    model.SelectedHashtagName =
+                        firstOrDefault.HashtagType;
             }
 
             return View(model);
         }
 
 
-
-        // GET: BlogPost/Details/5
-        public ActionResult Details(int id)
-        {
-            var ops = OperationsFactory.CreateBlogPostOps();
-            var blog = ops.GetBlogPostById(id);
-            return View();
-        }
-
-        // GET: BlogPost/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: BlogPost/Create
-        [HttpPost]
-        public ActionResult Create(BlogPost blog)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: BlogPost/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: BlogPost/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, BlogPost blog)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: BlogPost/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: BlogPost/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, BlogPost blog)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

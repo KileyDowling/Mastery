@@ -40,5 +40,21 @@ namespace TechBlogCMS.UI.Controllers
 
             return RedirectToAction("PendingApproval");
         }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                var ops = OperationsFactory.CreateBlogPostOps();
+                ops.DeleteBlogPost(id);
+
+                return RedirectToAction("PendingApproval", "PendingApproval");
+            }
+            catch
+            {
+                return RedirectToAction("PendingApproval","PendingApproval");
+            }
+        }
     }
 }

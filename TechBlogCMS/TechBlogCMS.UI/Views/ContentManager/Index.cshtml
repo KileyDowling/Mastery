@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TechBlogCMS.Models.BlogPost>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Content</h2>
+
+<p>
+    @Html.ActionLink("Create A New Post", "Index", "DraftPost")
+</p>
+<table class="table">
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.Label("Post Title")
+        </th>
+        <th>
+            @Html.Label("Content")
+        </th>
+        <th>
+            @Html.Label("Date Of Post")
+        </th>
+        <th>
+            @Html.Label("Status")
+        </th>
+        <th>
+</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td><form action="Delete" method="Post">
+    <input type="hidden" name="id" id="id" value="@item.BlogPostID" />
+    <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+</form>        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostTitle)
+        </td>
+        <td>
+            <div id="postContent" style="display: none">
+                @Html.Raw(item.PostContent)
+                <div id="categoriesOfBlog"></div>
+            </div>
+            <button id="showContent" class="btn-link"> Show Post Content</button>        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfPost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.StatusType)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BlogPostID }) |
+            @Html.ActionLink("Details", "Details", new {id = item.BlogPostID})
+
+          </td>
+    </tr>
+}
+
+</table>
+@section scripts {
+    <script>
+        $('button').click(function() {
+            $(this).prev('div').toggle();
+            $(this).text('...');
+        });
+    </script>
+}

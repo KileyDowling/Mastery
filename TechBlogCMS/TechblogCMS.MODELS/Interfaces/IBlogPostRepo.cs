@@ -22,7 +22,7 @@ namespace TechblogCMS.MODELS.Interfaces
 
         void EditBlogPost(BlogPost blog);
 
-        void DeleteBlogPost(BlogPost blog);
+        void DeleteBlogPost(int blogPostId);
 
 
     }

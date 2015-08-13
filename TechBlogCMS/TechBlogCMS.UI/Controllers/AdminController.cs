@@ -11,7 +11,7 @@ namespace TechBlogCMS.UI.Controllers
     public class AdminController : Controller
     {
          // GET: Admin
-        [Authorize(Roles = "Administration")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Admin()
         {
             

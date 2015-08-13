@@ -1,8 +1,19 @@
 ﻿.blogIntro {
- 
+
+    padding-bottom: 10px;
+    padding-top: 5px;
     text-align: center;
     background-color: #b0c4de;
+    border-radius: 10px;
    
+}
+
+
+#blogPosts {
+    
+    text-align: center;
+    background-color: #d3d3d3;
+    border-radius: 5px;
 }
 
 

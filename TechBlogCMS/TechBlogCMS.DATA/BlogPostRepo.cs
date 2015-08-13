@@ -205,9 +205,31 @@ namespace TechBlogCMS.DATA
             }
         }
 
-        public void DeleteBlogPost(BlogPost blog)
+        public void DeleteBlogPost(int blogId)
         {
-            throw new NotImplementedException();
+            DeletePostCategories(blogId);
+            DeletePostHashtags(blogId);
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                cn.Query("delete BlogPost where BlogPostID = @blogPost", new { blogPost = blogId });
+            }
+        }
+
+        public void DeletePostCategories(int blogId)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                cn.Query("delete PostCategories where BlogPostID = @blogPost", new {blogPost = blogId});
+            }
+        }
+
+        public void DeletePostHashtags(int blogId)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                cn.Query("delete PostHashtags where BlogPostID = @blogPost", new { blogPost = blogId });
+            }
         }
     }
 

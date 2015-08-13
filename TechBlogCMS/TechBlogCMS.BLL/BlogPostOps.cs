@@ -54,9 +54,9 @@ namespace TechBlogCMS.BLL
             _repo.EditBlogPost(blog);
         }
 
-        public void DeleteBlogPost(BlogPost blog)
+        public void DeleteBlogPost(int blogPostId)
         {
-            _repo.DeleteBlogPost(blog);
+            _repo.DeleteBlogPost(blogPostId);
         }
     }
 }

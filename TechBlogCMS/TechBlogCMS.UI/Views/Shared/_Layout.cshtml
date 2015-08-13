@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using System.Web.UI.WebControls
+@using Microsoft.AspNet.Identity
 
 <!DOCTYPE html>
 <html>
@@ -27,17 +28,29 @@
                     <ul class="nav navbar-nav">
 
                         @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                        @if (User.IsInRole("Administrator") || User.IsInRole("Contributor"))
+                        @if (User.IsInRole("Contributor"))
                         {
                             <li>@Html.ActionLink("Post Blog", "Index", "DraftPost")</li>
                             
                         }
 
-                        <li> @Html.ActionLink("View All Blog Posts", "ShowAllBlogPost", "BlogPost")</li>
+                        <li> @Html.ActionLink("View All Blog Posts", "ShowAllBlogPost", "DisplayBlogPosts")</li>
                         @if (User.IsInRole("Administrator"))
                         {
-                            <li>@Html.ActionLink("Admin Approvals", "PendingApproval", "PendingApproval")</li>    
+                            <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrator Tools <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Create New Post", "Index", "DraftPost")</li>
+
+                            <li>@Html.ActionLink("Pending Approvals", "PendingApproval", "PendingApproval")</li>
+
+                            <li>@Html.ActionLink("Manage Content", "Index", "ContentManager")</li>
+
                             <li>@Html.ActionLink("Register New User", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+
+                        </ul>
+                    </li>
+
 
                         }
                         <li>@Html.ActionLink("About", "About", "Home")</li>

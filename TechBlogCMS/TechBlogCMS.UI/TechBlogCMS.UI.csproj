@@ -183,7 +183,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\BlogPostController.cs" />
+    <Compile Include="Controllers\ContentManagerController.cs" />
+    <Compile Include="Controllers\DisplayBlogPostsController.cs" />
     <Compile Include="Controllers\DraftPostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -556,14 +557,11 @@
     <Content Include="Views\DraftPost\Index.cshtml" />
     <Content Include="Views\PendingApproval\PendingApproval.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
-    <Content Include="Views\Home\DisplayBy.cshtml" />
-    <Content Include="Views\BlogPost\Index.cshtml" />
-    <Content Include="Views\BlogPost\Details.cshtml" />
-    <Content Include="Views\BlogPost\Create.cshtml" />
-    <Content Include="Views\BlogPost\Edit.cshtml" />
-    <Content Include="Views\BlogPost\ShowAllBlogPost.cshtml">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="Views\ContentManager\Index.cshtml" />
+    <Content Include="Views\ContentManager\Details.cshtml" />
+    <Content Include="Views\ContentManager\Create.cshtml" />
+    <Content Include="Views\ContentManager\Edit.cshtml" />
+    <Content Include="Views\DisplayBlogPosts\ShowAllBlogPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

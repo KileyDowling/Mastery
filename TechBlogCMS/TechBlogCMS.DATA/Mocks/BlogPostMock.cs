@@ -65,7 +65,7 @@ namespace TechBlogCMS.DATA.Mocks
             throw new NotImplementedException();
         }
 
-        public void DeleteBlogPost(BlogPost blog)
+        public void DeleteBlogPost(int blogPostId)
         {
             throw new NotImplementedException();
         }

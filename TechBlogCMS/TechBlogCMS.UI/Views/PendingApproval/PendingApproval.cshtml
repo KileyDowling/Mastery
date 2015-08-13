@@ -28,7 +28,7 @@
                     @foreach (var p in Model.ListOfPosts)
                     {
                         <tr>
-                            <td><form action="Delete" method="Post">
+                            <td><form action="/PendingApproval/Delete" method="Post">
     <input type="hidden" name="id" id="id" value="@p.BlogPostID" />
     <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
 </form>   </td>

@@ -74,11 +74,11 @@ namespace TechBlogCMS.UI.Controllers
             }
         }
 
-        // GET: BlogPost/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+         //GET: BlogPost/Delete/5
+        public ActionResult Delete()
+        {
+            return RedirectToAction("Index", "ContentManager");
+        }
 
         // POST: BlogPost/Delete/5
         [HttpPost]
@@ -93,7 +93,7 @@ namespace TechBlogCMS.UI.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index", "ContentManager");
             }
         }
     }

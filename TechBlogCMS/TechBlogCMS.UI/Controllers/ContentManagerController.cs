@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TechblogCMS.MODELS;
 using TechBlogCMS.BLL;
 using TechBlogCMS.Models;
 using TechBlogCMS.UI.Models;
 
 namespace TechBlogCMS.UI.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class ContentManagerController : Controller
     {
         public ActionResult Index()
@@ -26,7 +28,7 @@ namespace TechBlogCMS.UI.Controllers
         public ActionResult Details(int id)
         {
             var ops = OperationsFactory.CreateBlogPostOps();
-            var blog = ops.GetBlogPostById(id);
+           var blog = ops.GetBlogPostById(id);
             return View(blog);
         }
 
@@ -95,6 +97,68 @@ namespace TechBlogCMS.UI.Controllers
             {
                 return RedirectToAction("Index", "ContentManager");
             }
+        }
+        
+        //GET: Static Page
+        public ActionResult CreateStaticPages()
+        {
+            StaticPageVM model = new StaticPageVM()
+            {
+                NewPage = new StaticPage()
+                {
+                    Status = new Status(),
+                    User = new User()
+                }
+
+            };
+            return View(model);
+        }
+
+        
+        [HttpPost]
+        public ActionResult CreateStaticPages(StaticPageVM model)
+        {
+            var staticPage = new StaticPage();
+
+            staticPage = model.NewPage;
+            staticPage.StaticPageContent = model.HtmlContent;
+            if (model.NewPage.Status == null)
+            {
+                staticPage.Status = new Status()
+                {
+                    StatusID = 1
+
+                };
+            }
+            else
+            {
+                staticPage.Status.StatusID = model.NewPage.Status.StatusID;
+            }
+            var ops = OperationsFactory.CreateStaticPageOps();
+           
+            ops.SaveStaticPage(staticPage);
+           
+
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        //Display Static Page Links in Nav Bar
+        [AllowAnonymous]
+        public PartialViewResult StaticPagePartial()
+        {
+            var ops = OperationsFactory.CreateStaticPageOps();
+            
+            return PartialView("_StaticPagePartial", ops.GetAllStaticPages());
+        }
+
+        [AllowAnonymous]
+        public ActionResult ReturnStaticPage(string id)
+        {
+            
+            var ops = OperationsFactory.CreateStaticPageOps();
+            var model= ops.GetStaticPageByTitle(id);
+            return View(model);
         }
     }
 }

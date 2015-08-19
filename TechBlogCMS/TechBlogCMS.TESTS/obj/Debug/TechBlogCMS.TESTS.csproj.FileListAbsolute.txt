@@ -1,0 +1,15 @@
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\TechBlogCMS.TESTS.dll.config
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\TechBlogCMS.TESTS.dll
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\TechBlogCMS.TESTS.pdb
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\Dapper.dll
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\TechBlogCMS.BLL.dll
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\TechBlogCMS.DATA.dll
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\TechblogCMS.MODELS.dll
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\TechBlogCMS.BLL.pdb
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\TechBlogCMS.DATA.pdb
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\TechblogCMS.MODELS.pdb
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\Dapper.pdb
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\bin\Debug\Dapper.xml
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\obj\Debug\TechBlogCMS.TESTS.csprojResolveAssemblyReference.cache
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\obj\Debug\TechBlogCMS.TESTS.dll
+\\psf\Home\Desktop\capstoneteamadotnetakronjune2015\TechBlogCMS\TechBlogCMS.TESTS\obj\Debug\TechBlogCMS.TESTS.pdb

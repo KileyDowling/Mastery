@@ -64,7 +64,7 @@
                     {
                         <table class="table-condensed">
                             <tr>
-                                <td><h4><b><a> @post.PostTitle </a></b></h4></td>
+                                <td><h4><b>@Html.ActionLink(@post.PostTitle,"ShowSinglePost", new { id = post.BlogPostID }) </b></h4></td>
                                 <td><h5><em>@post.DateOfPost.ToLongDateString()</em></h5></td>
                             </tr>
                         </table>

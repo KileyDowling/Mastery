@@ -63,5 +63,17 @@ namespace TechBlogCMS.BLL
                 return new HashtagOps(new HashtagRepo());
             }
         }
+
+        public static StaticPageOps CreateStaticPageOps()
+        {
+            if (mode == "Test")
+                return new StaticPageOps(new StaticPageMock());
+            else
+            {
+                return new StaticPageOps(new StaticPageRepo());
+            }
+        }
     }
+
+
 }

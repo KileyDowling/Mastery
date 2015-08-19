@@ -1,0 +1,6 @@
+﻿@model List<TechblogCMS.MODELS.StaticPage>
+           
+@foreach (var item in Model)
+{
+    <li>@Html.ActionLink(@item.StaticPageTitle,  "ReturnStaticPage", "ContentManager", new {id=item.GetUrlSlug()}, null)</li>
+}

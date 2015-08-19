@@ -17,9 +17,9 @@
         <th>
             @Html.Label("Post Title")
         </th>
-        <th>
+        @*<th>
             @Html.Label("Content")
-        </th>
+        </th>*@
         <th>
             @Html.Label("Date Of Post")
         </th>
@@ -39,12 +39,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.PostTitle)
         </td>
-        <td>
+        @*<td>
             <div id="postContent" style="display: none">
                 @Html.Raw(item.PostContent)
                 <div id="categoriesOfBlog"></div>
             </div>
-            <button id="showContent" class="btn-link"> Show Post Content</button>        </td>
+            <button id="showContent" class="btn-link"> Show Post Content</button>        
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.DateOfPost)
         </td>

@@ -1,0 +1,8 @@
+﻿@model TechblogCMS.MODELS.StaticPage
+@{
+    ViewBag.Title = "ReturnStaticPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Raw(Model.StaticPageContent)
+

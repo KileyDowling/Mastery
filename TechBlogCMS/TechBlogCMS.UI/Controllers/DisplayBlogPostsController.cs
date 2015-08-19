@@ -67,6 +67,15 @@ namespace TechBlogCMS.UI.Controllers
             return View(model);
         }
 
+        public ActionResult ShowSinglePost(int id)
+        {
+            var ops = OperationsFactory.CreateBlogPostOps();
+            var commentOps = OperationsFactory.CreateCommentOps();
 
+            var singlePostVM = new SingleBlogPostVM();
+            singlePostVM.SelectedBlogPost = ops.GetBlogPostById(id);
+            singlePostVM.Comments = commentOps.GetAllCommentsByBlogPostID(id);
+            return View(singlePostVM);
+        }
     }
 }

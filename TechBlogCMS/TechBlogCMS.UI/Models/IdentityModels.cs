@@ -35,6 +35,8 @@ namespace TechBlogCMS.UI.Models
 
         public System.Data.Entity.DbSet<TechBlogCMS.Models.BlogPost> BlogPosts { get; set; }
 
+        public System.Data.Entity.DbSet<TechblogCMS.MODELS.StaticPage> StaticPages { get; set; }
+
         //public System.Data.Entity.DbSet<TechBlogCMS.Models.BlogPost> BlogPost { get; set; }
     }
 }

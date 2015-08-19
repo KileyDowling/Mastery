@@ -1,0 +1,40 @@
+﻿@model TechBlogCMS.UI.Models.SingleBlogPostVM
+@{
+    ViewBag.Title = "ShowSinglePost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-2">
+        </div>
+    <div class="col-lg-8">
+        <br />
+        <h3>@Model.SelectedBlogPost.PostTitle</h3>
+
+        <div>
+            @Html.Label("Date")
+            @Model.SelectedBlogPost.DateOfPost
+
+            <div>
+                @Html.Raw(Model.SelectedBlogPost.PostContent)
+            </div>
+        </div>
+        <br />
+        <br />
+        <h4> @Html.Label("Comments")</h4>
+            @foreach (var comment in Model.Comments)
+            {
+                <table class="table-condensed">
+
+                    <tr>
+                        <td><b> Posted By: @comment.Nickname</b></td>
+                    </tr>
+                    <tr>
+                        <td>@comment.CommentContent</td>
+                    </tr>
+                    <tr><td> <em>Created: @comment.DateOfComment.ToShortDateString()</em></td>
+</tr>
+                </table>
+                <hr />
+            }
+        </div>
+    </div>

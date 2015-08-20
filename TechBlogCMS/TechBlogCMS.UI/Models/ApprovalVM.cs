@@ -13,7 +13,8 @@ namespace TechBlogCMS.UI.Models
         public List<BlogPost> ListOfPosts { get; set; }
         public List<BlogPost> ScheduledPosts { get; set; }
         public List<BlogPost> RejectedPostsList { get; set; }
-        public List<BlogPost> DraftedPosts { get; set; } 
+        public List<BlogPost> DraftedPosts { get; set; }
+        public List<Comment> CommentsToBeApproved { get; set; }
         public List<SelectListItem> Statuses { get; set; }
         public int BlogPostId { get; set; }
         public int StatusId { get; set; }

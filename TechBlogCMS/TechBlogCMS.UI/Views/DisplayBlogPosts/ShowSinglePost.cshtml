@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
         </div>
     <div class="col-lg-8">
         <br />
@@ -12,14 +12,33 @@
 
         <div>
             @Html.Label("Date")
-            @Model.SelectedBlogPost.DateOfPost
+            @Model.SelectedBlogPost.DateOfPost.ToShortDateString()
 
             <div>
                 @Html.Raw(Model.SelectedBlogPost.PostContent)
             </div>
         </div>
+        <hr />
         <br />
-        <br />
+        <div>
+
+            <h4>@Html.Label("Post a new comment")</h4>
+            @using (Html.BeginForm("PostNewComment", "DisplayBlogPosts", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-group" }))
+            {
+                <div class="form-group">
+
+                    @Html.Label("Nickname: ")
+                    @Html.TextBoxFor(m => m.NewComment.Nickname, new { @class = "form-control" })
+                    <br />
+                    @Html.Label("Comment: ")
+                    <br />
+                    @Html.TextAreaFor(m => m.NewComment.CommentContent, new { @class = "form-control" })
+                    <input type="hidden" id="NewComment_BlogPostID" name="NewComment.BlogPostID" value="@Model.SelectedBlogPost.BlogPostID">
+                </div>
+    <input type="submit" name="Submit" value="Submit" class="btn btn-primary" />
+            }
+            <hr />
+        </div>
         <h4> @Html.Label("Comments")</h4>
             @foreach (var comment in Model.Comments)
             {

@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechBlogCMS.DATA;
 using TechBlogCMS.DATA.Mocks;
 using TechBlogCMS.Models;
+using TechblogCMS.MODELS;
 
 namespace TechBlogCMS.TESTS
 {
@@ -29,8 +30,8 @@ namespace TechBlogCMS.TESTS
             {
                 BlogPostID = 1,
                 CommentContent = "This is a comment test",
-                StatusID = 1,
-                UserID = 0,
+                Status = new Status() { StatusID = 1 },
+                User = new User(),
                 Nickname = "Jake"
                 
             };

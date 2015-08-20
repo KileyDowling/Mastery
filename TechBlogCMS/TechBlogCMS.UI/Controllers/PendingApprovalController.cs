@@ -21,10 +21,12 @@ namespace TechBlogCMS.UI.Controllers
             };
             var blogPostOps = OperationsFactory.CreateBlogPostOps();
             var statusOps = OperationsFactory.CreateStatusOps();
+            var commentOps = OperationsFactory.CreateCommentOps();
             model.ListOfPosts = blogPostOps.GetAllBlogPosts().FindAll(x=>x.Status.StatusID == 1);
             model.RejectedPostsList = blogPostOps.GetAllBlogPosts().FindAll(x => x.Status.StatusID == 3);
             model.DraftedPosts = blogPostOps.GetAllBlogPosts().FindAll(x => x.Status.StatusID == 5);
             model.ScheduledPosts = blogPostOps.GetAllBlogPosts().FindAll(x => x.Status.StatusID == 6 || x.DateOfPost > DateTime.Today);
+            model.CommentsToBeApproved = commentOps.GetAllComments().FindAll(x => x.Status.StatusID == 1);
             var statusList = statusOps.ListAllStatuses();
 
             model.GenerateStatusList(statusList);
@@ -55,6 +57,32 @@ namespace TechBlogCMS.UI.Controllers
             {
                 return RedirectToAction("PendingApproval","PendingApproval");
             }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteComment(int id)
+        {
+            try 
+            {
+                var ops = OperationsFactory.CreateCommentOps();
+                ops.DeleteComment(id);
+                return RedirectToAction("PendingApproval", "PendingApproval");
+            }
+            catch
+            {
+                return RedirectToAction("PendingApproval", "PendingApproval");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ApproveComment(int commentId)
+        {
+            var ops = OperationsFactory.CreateCommentOps();
+            ops.ApproveComment(commentId, 2);
+
+            return RedirectToAction("PendingApproval", "PendingApproval");
+
+
         }
     }
 }

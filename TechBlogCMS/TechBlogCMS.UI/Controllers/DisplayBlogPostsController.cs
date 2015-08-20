@@ -72,10 +72,24 @@ namespace TechBlogCMS.UI.Controllers
             var ops = OperationsFactory.CreateBlogPostOps();
             var commentOps = OperationsFactory.CreateCommentOps();
 
-            var singlePostVM = new SingleBlogPostVM();
+            var singlePostVM = new SingleBlogPostVM()
+            {
+                NewComment = new Comment()
+            };
             singlePostVM.SelectedBlogPost = ops.GetBlogPostById(id);
-            singlePostVM.Comments = commentOps.GetAllCommentsByBlogPostID(id);
+            singlePostVM.Comments = commentOps.GetAllCommentsByBlogPostID(id).FindAll(x=>x.Status.StatusID == 2);
             return View(singlePostVM);
+        }
+
+        [HttpPost]
+        public ActionResult PostNewComment(SingleBlogPostVM model)
+        {
+            var ops = OperationsFactory.CreateCommentOps();
+            model.NewComment.DateOfComment = DateTime.Now;
+            model.NewComment.Status = new Status() { StatusID = 1 };
+            ops.CreateComment(model.NewComment);
+
+            return RedirectToAction("ShowSinglePost", new {id=model.NewComment.BlogPostID});
         }
     }
 }

@@ -128,6 +128,7 @@
                             <th>Post Date</th>
                             <th>Approval Status</th>
 
+
                         </tr>
                     </thead>
                     <tbody>
@@ -153,21 +154,53 @@
                 </table>
             </div>
         </div>
-    @*<div class="group">
+    <div class="group">
         <h3>Pending Comment Approvals</h3>
         <div class="commentapprovals">
 
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>User Name</th>
-                        <th>Comment</th>
+                        <th></th>
                         <th>Comment Date</th>
+                        <th>Nickname</th>
+                        <th>Comment</th>
+                        <th></th>
                     </tr>
                 </thead>
+                @foreach (var comment in Model.CommentsToBeApproved)
+                {
+                    <tr>
+                        <td>
+                            <form action="/PendingApproval/DeleteComment" method="Post">
+                                <input type="hidden" name="id" id="id" value="@comment.CommentID" />
+                                <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+                            </form>
+                        </td>
+                        <td>@comment.DateOfComment.ToShortDateString()</td>
+                        <td>@comment.Nickname</td>
+                        <td>@comment.CommentContent</td>
+                        <td>
+                            <form action="/PendingApproval/ApproveComment" method="Post">
+                                @Html.DropDownListFor(x => x.StatusId, new List<SelectListItem>() { new SelectListItem () 
+                           {
+                               Text="Approve",
+                           
+                           }
+                           
+                           }, new { @class = "btn btn-default dropdown-toggle btn-sm"})
+                                <input type="hidden" name="commentId" id="commentId" value="@comment.CommentID" />
+
+                                <button class="btn btn-default btn-sm">Update</button>
+                            </form>
+
+                        </td>
+                
+                </tr>
+                }
             </table>
         </div>
-    </div>*@
+    </div>
 </div>
 
 @section scripts

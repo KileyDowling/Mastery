@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechBlogCMS.BLL;
 using TechBlogCMS.Models;
+using TechblogCMS.MODELS;
 
 namespace TechBlogCMS.TESTS.OpsTests
 {
@@ -16,8 +17,8 @@ namespace TechBlogCMS.TESTS.OpsTests
             {
                 BlogPostID = 1,
                 CommentContent = "Lets test these thangs",
-                StatusID = 2,
-                UserID = 0, 
+                Status = new Status() { StatusID = 1 },
+                User = new User(),
                 Nickname = "Kiley",
                 DateOfComment = new DateTime(7/24/2015)
             };

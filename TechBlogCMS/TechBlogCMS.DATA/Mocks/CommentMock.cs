@@ -5,11 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using TechblogCMS.MODELS.Interfaces;
 using TechBlogCMS.Models;
+using TechblogCMS.MODELS;
 
 namespace TechBlogCMS.DATA.Mocks
 {
     public class CommentMock : ICommentRepo
     {
+        public void DeleteComment(int id)
+        {
+
+        }
+
+
+        public List<Comment> GetAllComments()
+        {
+            return new List<Comment>();
+        }
         public List<Comment> GetAllCommentsByPostID(int id)
         {
             return new List<Comment>()
@@ -19,8 +30,8 @@ namespace TechBlogCMS.DATA.Mocks
                     CommentID = 1,
                     BlogPostID = 1,
                     CommentContent = "This is our first comment",
-                    StatusID = 1,
-                    UserID = 1,
+                    Status = new Status() {StatusID=1},
+                    User = new User(),
                     Nickname = "Sadukie"
 
                 },
@@ -30,8 +41,8 @@ namespace TechBlogCMS.DATA.Mocks
                     CommentID = 2,
                     BlogPostID = 1,
                     CommentContent = "This is our second comment",
-                    StatusID = 1,
-                    UserID = 2,
+                    Status = new Status() {StatusID=1},
+                    User = new User(),
                     Nickname = "JakeSaliga"
 
                 },
@@ -40,8 +51,8 @@ namespace TechBlogCMS.DATA.Mocks
                     CommentID = 3,
                     BlogPostID = 1,
                     CommentContent = "This is our third comment",
-                    StatusID = 1,
-                    UserID = 1,
+                    Status = new Status() {StatusID=1},
+                    User = new User(),
                     Nickname = "Sadukie"
 
                 },
@@ -51,6 +62,12 @@ namespace TechBlogCMS.DATA.Mocks
         public void CreateComment(Comment comment)
         {
             
+        }
+
+
+        public void ApproveComment(int commentId, int statusId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -10,5 +10,6 @@ namespace TechBlogCMS.UI.Models
     {
         public BlogPost SelectedBlogPost { get; set; }
         public List<Comment> Comments { get; set; }
+        public Comment NewComment { get; set; }
     }
 }

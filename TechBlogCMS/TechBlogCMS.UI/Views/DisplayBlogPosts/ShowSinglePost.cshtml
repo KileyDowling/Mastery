@@ -17,6 +17,21 @@
             <div>
                 @Html.Raw(Model.SelectedBlogPost.PostContent)
             </div>
+            <div>
+                @if(Model.CategoriesForPost != null && Model.CategoriesForPost.Count > 0)
+                { 
+               <b> Categories: </b>foreach (var item in Model.CategoriesForPost) { <em> @item.CategoryType, </em> } 
+                <br />
+                }
+                @if (Model.HashtagsForPost != null && Model.HashtagsForPost.Count > 0)
+                {
+                    <b> Tags: </b> foreach (var item in Model.HashtagsForPost)
+                    { <em> #@item.HashtagType </em> }
+
+                }
+                
+    
+            </div>
         </div>
         <hr />
         <br />

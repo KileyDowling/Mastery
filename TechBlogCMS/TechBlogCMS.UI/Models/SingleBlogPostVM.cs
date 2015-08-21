@@ -11,5 +11,8 @@ namespace TechBlogCMS.UI.Models
         public BlogPost SelectedBlogPost { get; set; }
         public List<Comment> Comments { get; set; }
         public Comment NewComment { get; set; }
+        public List<CategoryOfPost> CategoriesForPost { get; set; }
+        public List<Hashtag> HashtagsForPost { get; set; }
+
     }
 }

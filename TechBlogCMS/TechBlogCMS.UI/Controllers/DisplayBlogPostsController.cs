@@ -71,6 +71,8 @@ namespace TechBlogCMS.UI.Controllers
         {
             var ops = OperationsFactory.CreateBlogPostOps();
             var commentOps = OperationsFactory.CreateCommentOps();
+            var categoryOps = OperationsFactory.CreateCategoryOps();
+            var hashOps = OperationsFactory.CreateHashtagOps();
 
             var singlePostVM = new SingleBlogPostVM()
             {
@@ -78,6 +80,8 @@ namespace TechBlogCMS.UI.Controllers
             };
             singlePostVM.SelectedBlogPost = ops.GetBlogPostById(id);
             singlePostVM.Comments = commentOps.GetAllCommentsByBlogPostID(id).FindAll(x=>x.Status.StatusID == 2);
+            singlePostVM.CategoriesForPost = categoryOps.ListAllCategoriesForBlogPost(id);
+            singlePostVM.HashtagsForPost = hashOps.ListAllHashtagsForBlogPost(id);
             return View(singlePostVM);
         }
 

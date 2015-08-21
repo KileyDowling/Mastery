@@ -53,14 +53,17 @@ namespace TechBlogCMS.DATA
                 blog.User = repo.GetUserById(id);
                 blog.User.UserId = id;
             }
+
             return blogPosts;
         }
 
         public BlogPost GetBlogPostById(int blogPostId)
         {
+            //var singleBlogPost = new BlogPost();
+            var blogPosts = new List<BlogPost>();
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
-                var cmd = new SqlCommand("Select b.UserID, b.PostContent,b.StatusID,s.StatusType, b.DateOfPost, b.PostTitle, b.BlogPostID from Blogpost b inner join [Status] s  on b.StatusID= s.StatusID where b.BlogPostID = BlogPostID order by b.DateOfPost desc", cn);
+                var cmd = new SqlCommand("Select b.UserID, b.PostContent,b.StatusID,s.StatusType, b.DateOfPost, b.PostTitle, b.BlogPostID from Blogpost b inner join [Status] s  on b.StatusID= s.StatusID order by b.DateOfPost desc", cn);
                 cn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
@@ -79,18 +82,22 @@ namespace TechBlogCMS.DATA
                         blog.PostTitle = dr.GetString(5);
                         blog.BlogPostID = dr.GetInt32(6);
 
-                        return blog;
+                        blogPosts.Add(blog);
                     }
                 }
 
             }
             //var repo = new UserRepo();
+            //foreach (var blog in blogPosts)
             //{
             //    var id = blog.User.UserId;
             //    blog.User = repo.GetUserById(id);
             //    blog.User.UserId = id;
             //}
 
+            //singleBlogPost = blogPosts.FirstOrDefault(bp => bp.BlogPostID == blogPostId);
+
+            //return singleBlogPost;
             return null;
         }
     
@@ -106,7 +113,16 @@ namespace TechBlogCMS.DATA
                 p.Add("@DateOfPost", blog.DateOfPost);
                 p.Add("@PostTittle", blog.PostTitle);
 
-                cn.Query("SubmitNewBlogPost", p, commandType: CommandType.StoredProcedure);
+                if (blog.BlogPostID > 0)
+                {
+                    p.Add("@BlogPostId", blog.BlogPostID);
+
+                    cn.Execute("UpdateBlogPost", p, commandType: CommandType.StoredProcedure);
+                }
+                else
+                {
+                    cn.Query("SubmitNewBlogPost", p, commandType: CommandType.StoredProcedure);
+                }
             }
         }
 
